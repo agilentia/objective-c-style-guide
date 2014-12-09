@@ -138,6 +138,16 @@ In method signatures, there should be a space after the scope (-/+ symbol). Ther
 ```objc
 - (void)setExampleText:(NSString *)text image:(UIImage *)image;
 ```
+
+Methods with long names should called with line breaking as the follow example:
+
+**Example**:
+```objc
+[self doSomethingWithAString:aString 
+                  andANumber:aNumber
+                 andABoolean:aBoolean];
+```
+
 ## Variables
 
 Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
