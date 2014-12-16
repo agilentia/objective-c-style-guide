@@ -77,14 +77,14 @@ Conditional bodies should always use braces even when a conditional body could b
 **For example:**
 ```objc
 if (!error) {
-return success;
+    return success;
 }
 ```
 
 **Not:**
 ```objc
 if (!error)
-return success;
+    return success;
 ```
 
 or
@@ -115,7 +115,7 @@ When methods return an error parameter by reference, switch on the returned valu
 ```objc
 NSError *error;
 if (![self trySomethingWithError:&error]) {
-// Handle Error
+    // Handle Error
 }
 ```
 
@@ -124,7 +124,7 @@ if (![self trySomethingWithError:&error]) {
 NSError *error;
 [self trySomethingWithError:&error];
 if (error) {
-// Handle Error
+    // Handle Error
 }
 ```
 
@@ -139,22 +139,22 @@ In method signatures, there should be a space after the scope (-/+ symbol). Ther
 - (void)setExampleText:(NSString *)text image:(UIImage *)image;
 ```
 
-Methods with long names should called with line breaking as the follow example:
+Methods with long names should called with line breaks after each parameter and lines aligned on the colons.
 
-**Example**:
+**For Example**:
 ```objc
 [self doSomethingWithAString:aString 
-andANumber:aNumber
-andABoolean:aBoolean];
+                  andANumber:aNumber
+                 andABoolean:aBoolean];
 ```
 
-Method implementation bracketting should be done in the next line.
+The opening bracket for method implementations should be on line after the method name.
 
-**Example**:
+**For Example**:
 ```objc
 - (void)setExampleText:(NSString *)text image:(UIImage *)image
 {
-// Do stuff...
+    // Do stuff...
 }
 ```
 ## Variables
@@ -250,12 +250,12 @@ Block comments should generally be avoided, as code should be as self-documentin
 ```objc
 - (instancetype)init 
 {
-self = [super init]; // or call the designated initializer
-if (self) {
-// Custom initialization
-}
-
-return self;
+    self = [super init]; // or call the designated initializer
+    if (self) {
+        // Custom initialization
+    }
+    
+    return self;
 }
 ```
 
@@ -337,8 +337,8 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 
 ```objc
 typedef NS_ENUM(NSInteger, NYTAdRequestState) {
-NYTAdRequestStateInactive,
-NYTAdRequestStateLoading
+    NYTAdRequestStateInactive,
+    NYTAdRequestStateLoading
 };
 ```
 
@@ -350,10 +350,10 @@ When working with bitmasks, use the `NS_OPTIONS` macro.
 
 ```objc
 typedef NS_OPTIONS(NSUInteger, NYTAdCategory) {
-NYTAdCategoryAutos      = 1 << 0,
-NYTAdCategoryJobs       = 1 << 1,
-NYTAdCategoryRealState  = 1 << 2,
-NYTAdCategoryTechnology = 1 << 3
+    NYTAdCategoryAutos      = 1 << 0,
+    NYTAdCategoryJobs       = 1 << 1,
+    NYTAdCategoryRealState  = 1 << 2,
+    NYTAdCategoryTechnology = 1 << 3
 };
 ```
 
@@ -434,14 +434,14 @@ Text and example taken from the [Cocoa Naming Guidelines](https://developer.appl
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
 + (instancetype)sharedInstance {
-static id sharedInstance = nil;
-
-static dispatch_once_t onceToken;
-dispatch_once(&onceToken, ^{
-sharedInstance = [[self alloc] init];
-});
-
-return sharedInstance;
+    static id sharedInstance = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    
+    return sharedInstance;
 }
 ```
 This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html).
