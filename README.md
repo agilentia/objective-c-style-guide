@@ -158,17 +158,11 @@ The opening bracket for method implementations should be on line after the metho
     // Do stuff...
 }
 ```
-Method names should only use more than one or two prepositions (eg for, and, with, to etc). Generally, a preposition should only be used with the first or second argument. A preposition before a parameter name should be used to indicate that a parameter is important, and should never be used for optional parameters.
+Method names should not contain prepositions (eg for, and, with, to etc) as much as possible. If prepositions are used they should only be used with the first or, exceptionally, second parameter. A preposition before a parameter name indicates that a parameter is vital, and should never be used for optional parameters.
 
 **For Example**:
-```objc
-- (void)addObserver:(NSObject *)anObserver
-         forKeyPath:(NSString *)keyPath
-            options:(NSKeyValueObservingOptions)options
-            context:(void *)context
-```
 
-or
+(From Apple's [`NSNotificationCenter`](https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSNotificationCenter_Class/index.html#//apple_ref/occ/instm/NSNotificationCenter/addObserver:selector:name:object:) class reference)
 
 ```objc
 - (void)addObserver:(id)notificationObserver
@@ -178,15 +172,6 @@ or
 ```
 
 **Not**:
-```objc
-- (void)addObserver:(NSObject *)anObserver
-         forKeyPath:(NSString *)keyPath
-        withOptions:(NSKeyValueObservingOptions)options
-         andContext:(void *)context
-```
-
-nor
-
 ```objc
 - (void)addObserver:(id)notificationObserver
         forSelector:(SEL)notificationSelector
