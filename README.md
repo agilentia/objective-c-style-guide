@@ -143,9 +143,10 @@ Methods with long names should called with line breaks after each parameter and 
 
 **For Example**:
 ```objc
-[self doSomethingWithAString:aString 
-                  andANumber:aNumber
-                 andABoolean:aBoolean];
+[someObject addObserver:self 
+             forKeyPath:@"name"
+                options:NSKeyValueObservingOptionNew
+                context:nil];
 ```
 
 The opening bracket for method implementations should be on line after the method name.
@@ -157,6 +158,43 @@ The opening bracket for method implementations should be on line after the metho
     // Do stuff...
 }
 ```
+Method names should only use more than one or two prepositions (eg for, and, with, to etc). Generally, a preposition should only be used with the first or second argument. A preposition before a parameter name should be used to indicate that a parameter is important, and should never be used for optional parameters.
+
+**For Example**:
+```objc
+- (void)addObserver:(NSObject *)anObserver
+         forKeyPath:(NSString *)keyPath
+            options:(NSKeyValueObservingOptions)options
+            context:(void *)context
+```
+
+or
+
+```objc
+- (void)addObserver:(id)notificationObserver
+           selector:(SEL)notificationSelector
+               name:(NSString *)notificationName
+             object:(id)notificationSender
+```
+
+**Not**:
+```objc
+- (void)addObserver:(NSObject *)anObserver
+         forKeyPath:(NSString *)keyPath
+        withOptions:(NSKeyValueObservingOptions)options
+         andContext:(void *)context
+```
+
+nor
+
+```objc
+- (void)addObserver:(id)notificationObserver
+        forSelector:(SEL)notificationSelector
+            andName:(NSString *)notificationName
+          andObject:(id)notificationSender
+```
+
+
 ## Variables
 
 Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
